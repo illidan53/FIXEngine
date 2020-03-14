@@ -1,0 +1,72 @@
+common:
+    1:
+        name: Account
+        regex: .*
+    7:
+        name: BeginSeqNo
+    8:
+        name: BeginString
+        header: True
+    9:
+        name: BodyLength
+        header: True
+    10:
+        name: CheckSum
+        trailer: True
+        header: True
+    11:
+        name: ClOrdID
+    14:
+        name: CumQty
+    15:
+        name: Currency
+    16:
+        name: EndSeqNo
+    17:
+        name: ExecID
+    18:
+        name: ExecInst
+    21:
+        name: HandlInst
+    30:
+        name: LastMkt
+    31:
+        name: LastPx
+    32:
+        name: LastQty
+    34:
+        name: MsgSeqNum
+    35:
+        name: MsgType
+    37:
+        name: OrderID
+    38:
+        name: OrderQty
+    39:
+        name: OrdStatus
+    40:
+        name: OrdType
+    41:
+        name: OrigClOrdID
+    44:
+        name: Price
+    48:
+        name: SecurityID
+    49:
+        name: SenderCompID
+    52:
+        name: SendingTime
+    54:
+        name: Side
+    55:
+        name: Symbol
+    56:
+        name: TargetCompID
+    58:
+        name: Text
+    59:
+        name: TimeInForce
+    60:
+        name: TransactTime
+    100:
+        name: ExDestination
