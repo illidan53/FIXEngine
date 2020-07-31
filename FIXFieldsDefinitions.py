@@ -11,6 +11,11 @@ except ImportError:
 
 class FIXFieldsDefinitions(object):
 
+    """
+    self.meta_fields basic data structure: dict of OrderedDict
+    {version: {field_id: MetaFIXField()}}
+    """
+
     ALLOWED_VERSIONS = ('common', 4.2, 4.3, 4.4)
 
     def __init__(self):
@@ -51,7 +56,7 @@ class FIXFieldsDefinitions(object):
                 ID = f_id
                 name = f_data.get('name')
                 version = f_data.get('version', vers)
-                values = f_data.get('values', None)
+                values = f_data.get('values', {})
                 regex = f_data.get('regex', None)
                 is_header = f_data.get('is_header', False)
                 is_trailer = f_data.get('is_trailer', False)
@@ -96,8 +101,18 @@ class MetaFIXField(object):
     @ID.setter
     def ID(self, value):
         if not isinstance(value, int):
-            raise TypeError(f"[SingleField] Fail to set/construct single field ID, expecting int class instance but received [{value}] of type [{type(value)}]")
+            raise TypeError(f"[MetaFIXField] Fail to set/construct single field ID, expecting int class instance but received [{value}] of type [{type(value)}]")
         self._ID = value
+
+    @property
+    def values(self):
+        return self._values
+
+    @values.setter
+    def values(self, values):
+        if not isinstance(values, abc.Mapping):
+            raise TypeError(f"[MetaFIXField] Fail to set/construct FIXFieldValue objects from user input values [{values}], type is [{type(values)}] but expecting abc.Mapping")
+        self._values = values
 
 
 class FIXFieldValue(object):
